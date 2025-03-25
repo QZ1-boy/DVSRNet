@@ -52,10 +52,11 @@ python test_LD_37.py
 # Citation
 If this repository is helpful to your research, please cite our paper:
 ```python
-@article{zhu2025fcvsr,
-  title={FCVSR: A Frequency-aware Method for Compressed Video Super-Resolution},
-  author={Zhu, Qiang and Zhang, Fan and Chen, Feiyu and Zhu, Shuyuan and Bull, David and Zeng, Bing},
-  journal={arXiv preprint arXiv:2502.06431},
-  year={2025}
+@article{zhu2024dvsrnet,
+  title={Dvsrnet: Deep video super-resolution based on progressive deformable alignment and temporal-sparse enhancement},
+  author={Zhu, Qiang and Chen, Feiyu and Zhu, Shuyuan and Liu, Yu and Zhou, Xue and Xiong, Ruiqin and Zeng, Bing},
+  journal={IEEE Transactions on Neural Networks and Learning Systems},
+  year={2024},
+  publisher={IEEE}
 }
 ```
