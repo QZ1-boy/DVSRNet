@@ -23,18 +23,18 @@ VSR Training Dataset:
 
 [MMCNN dataset] [MMCNN](https://ieeexplore.ieee.org/document/8579237)
 
-Optical Flow Training Datasets:
-
-[Sintel dataset] [Sintel](https://link.springer.com/chapter/10.1007/978-3-642-33783-3_44),
-[KITTI dataset] [KITTI](https://ieeexplore.ieee.org/document/7298925),
-[FlyingChairs dataset] [FlyChairs](https://ieeexplore.ieee.org/document/7410673),
-[FlyingThings3D dataset] [FlyThings3D](https://ieeexplore.ieee.org/document/7780807)
-
 VSR Testing Datasets:
 
 [Myanmar dataset] [Myanmar](https://ieeexplore.ieee.org/document/7444187),
 [YUV21 dataset] [YUV21](https://ieeexplore.ieee.org/document/7858640),
 [Vid4 dataset] [Vid4](https://ieeexplore.ieee.org/document/8099787)
+
+Optical Flow Training and Testing Datasets:
+
+[Sintel dataset] [Sintel](https://link.springer.com/chapter/10.1007/978-3-642-33783-3_44),
+[KITTI dataset] [KITTI](https://ieeexplore.ieee.org/document/7298925),
+[FlyingChairs dataset] [FlyChairs](https://ieeexplore.ieee.org/document/7410673),
+[FlyingThings3D dataset] [FlyThings3D](https://ieeexplore.ieee.org/document/7780807)
 
 
 # Train
