@@ -39,11 +39,11 @@ Optical Flow Training and Testing Datasets:
 
 # Train
 ```python
-python train_x2.py
+python basicsr/train.py -opt options/train/ICME2/train_VSRFG_TSEM_spynet_S_MM522_VMY_x4.yml
 ```
 # Test
 ```python
-python test_x2.py 
+python basicsr/test.py -opt options/test/ICME2/test_VSRFG_TSEM_spynet_S_MM522_VMY_x4.yml
 ```
 # Citation
 If this repository is helpful to your research, please cite our paper:
