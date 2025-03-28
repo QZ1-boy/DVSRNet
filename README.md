@@ -1,6 +1,6 @@
 # DVSRNet
 
-The code of the paper "DVSRNet: Deep Video Super-Resolution Based on Progressive Deformable Alignment and Temporal-Sparse Enhancement".
+Code of the paper "DVSRNet: Deep Video Super-Resolution Based on Progressive Deformable Alignment and Temporal-Sparse Enhancement".
 
 # Requirements
 
