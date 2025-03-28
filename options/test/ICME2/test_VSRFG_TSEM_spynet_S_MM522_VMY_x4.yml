@@ -1,0 +1,80 @@
+name: ICMEVSRx4_FG_TSEM_spynet_S_MM522
+model_type: VideoRecurrentModel # VideoBaseModel  # VideoRecurrentModel
+scale: 4
+num_gpu: 4  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+datasets:
+  test_1:  # the 1st test dataset
+    name: vid4
+    type: VideoRecurrentTestDataset  # VideoTestVimeo90KDataset # VideoRecurrentTestDataset 
+    dataroot_gt: /share3/home/zqiang/BasicSR0906/datasets/data/vid4/GT  #Vimeo90K/vid4/GT     #vid4GT  vid4GT-1   #  Vimeo90K/vid4/GT
+    dataroot_lq:  /share3/home/zqiang/BasicSR0906/datasets/data/vid4/GTx4  #  vid4-1
+    # meta_info_file: /share22/home/zhuqiang/zhuqiang/mmediting/data/meta_info_Vid4_GT.txt
+    # dataroot_gt: /share4/home/zqiang/mmediting0406/mmediting-master/data/Vid4/GT
+    # dataroot_lq: /share4/home/zqiang/mmediting0406/mmediting-master/data/Vid4/BIx4
+    # test_mode: True
+    cache_data: True # True
+    io_backend:
+      type: disk
+    num_frame: 7  # not needed
+    
+  # test_2:  # the 2st test dataset
+  #   name: myanmar
+  #   type: VideoRecurrentTestDataset  # MM522Dataset  # MM522RecurrentDataset VideoRecurrentTestDataset
+  #   dataroot_gt: /share22/home/zhuqiang/zhuqiang/BasicSR0906/tests/Myanmartest/GT  #  /share22/home/zhuqiang/zhuqiang/BasicSR0906/tests/dataDVL/Myanmar/HR_tmp
+  #   dataroot_lq: /share22/home/zhuqiang/zhuqiang/BasicSR0906/tests/Myanmartest/GTx4   #  /share22/home/zhuqiang/zhuqiang/BasicSR0906/tests/dataDVL/Myanmar/LR_2_tmp
+  #   # dataroot_gt: /share22/home/zhuqiang/zhuqiang/BasicSR0906/tests/Myanmartest/GT  #  /share22/home/zhuqiang/zhuqiang/BasicSR0906/tests/dataDVL/Myanmar/HR_tmp
+  #   # dataroot_lq: /share22/home/zhuqiang/zhuqiang/BasicSR0906/tests/Myanmartest/GTx4 
+  #   # meta_info_file: /share22/home/zhuqiang/zhuqiang/BasicSR0906/datasets/data/train/Filelist_train.txt
+  #   # val_partition: eval  # set to 'official' when use the official validation partition
+  #   # test_mode: True
+  #   cache_data: True # True
+  #   io_backend:
+  #     type: disk
+  #   num_frame: -1  # not needed
+
+  # test_3:  # the 3st test dataset
+  #   name: YUV21
+  #   type: VideoRecurrentTestDataset  # MM522Dataset  # MM522RecurrentDataset
+  #   dataroot_gt: /share22/home/zhuqiang/zhuqiang/BasicSR0906/tests/YUV21/GT_24_new  # GT_24_new  # GT_24_scale2  # GT_24  #  GT_24_new
+  #   dataroot_lq: /share22/home/zhuqiang/zhuqiang/BasicSR0906/tests/YUV21/GTx4_scale4  # GTx2   #  GTx2_new
+  #   # dataroot_gt: /share22/home/zhuqiang/zhuqiang/BasicSR0906/tests/YUV21/GT_3
+  #   # dataroot_lq: /share22/home/zhuqiang/zhuqiang/BasicSR0906/tests/YUV21/GTx3
+  #   # test_mode: True
+  #   cache_data: True
+  #   io_backend:
+  #     type: disk
+  #   num_frame: 7  # not needed
+
+# network structures
+network_g:
+  type:  ICMEVSRx4_FG_TRB_Spynet_S_img_warp  #  IconVSRx2_FG_SPM
+  num_feat: 64
+  num_block: 10
+  keyframe_stride: 5
+  temporal_padding: 3
+  #spynet_path: /share22/home/zhuqiang/zhuqiang/BasicSR0906/experiments/pretrained_models/flownet/raft-sintel_49000_1021_22-20.pth  # 25000_0718_19-46_raft-chairs.pth
+  #edvr_path: /share22/home/zhuqiang/zhuqiang/BasicSR0906/experiments/pretrained_models/BasicVSR/EDVR_Vimeo90K_pretrained_for_IconVSR-ee48ee92.pth
+
+# path
+path:
+  pretrain_network_g: /share3/home/zqiang/BasicSR0906/experiments/ICMEVSRx4_FG_TSEM_spynet_S_MM522/models/net_g_175000.pth #  net_g_175000.pth  # net_g_best.pth #(155000.pth) net_g_175000.pth  # net_g_best.pth  # net_g_130000.pth  # net_g_best.pth  #  net_g_120000.pth # net_g_best.pth # net_g_good.pth  # net_g_best.pth  # 
+  strict_load_g: true
+
+# validation settings
+val:
+  save_img: false # true
+  flip_seq: false # true 有效果
+  # center_frame_only: true
+  suffix: ~  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 11
+      test_y_channel: true # false # true # false
+    ssim:
+      type: calculate_ssim
+      crop_border: 8
+      test_y_channel: true # false # true # false
